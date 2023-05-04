@@ -1,5 +1,6 @@
 import './App.css'
-import { LoginForm } from './components/loginForm' 
+import { LoginForm } from './components/LoginForm' 
+import { RegisterForm } from './components/RegisterForm' 
 import { useState } from 'react'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     items-center
     w-screen
     h-screen
+    p-10
     backdrop-blur-[2.5px]
     bg-gradient-to-r from-red-600 to-[#ff9437]
   `
@@ -18,19 +20,24 @@ function App() {
   const [recoverPass, setRecoverPass] = useState(false)
   const [register, setRegister] = useState(false)
   const [checkLogin, setLogin] = useState(false)
+  const [mainPage, setMainPage] = useState(false)
 
   const HandleClickRecoverPass = () => {
     setRecoverPass(true)
-}
+  }
 
   const HandleClickRegister = () => {
     setRegister(true)
-}
+  }
 
   const HandleClickLogin = () => {
     setLogin(true)
-}
+    setMainPage(true)
+  }
 
+  const HandleClickRegisterTrue = () => {
+    setRegister(false)
+  }
   return (
 
    <div className={container}>
@@ -48,10 +55,10 @@ function App() {
     }
 
     {register &&
-      <div> Registrar </div>
+      <RegisterForm functionClickRegister1={HandleClickRegisterTrue}/>
     }
 
-    {checkLogin &&
+    {checkLogin && mainPage &&
       <div> Logado </div>
     }
       
