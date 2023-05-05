@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { RegisterStyles } from "./stylesTail"
 import styles from './styles.module.css'
@@ -33,9 +33,8 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
         functionClickRegister1()
     }
     return (
-        <div className={`${RegisterStyles.registerContainer} py-4`}>
-
-            <form className="w-max h-full flex-wrap box-border flex flex-col">
+        <>
+            <form className="w-max h-max box-border flex flex-col">
                 <div className="display flex flex-col">
 
                     <div>
@@ -45,6 +44,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     <div className={`${RegisterStyles.inputContainer} border-none`}>
                         <input 
                         className={`${styles.inputStyle} text-[12px] h-max`}
+                        required
                         type="file"
                         name="avatar"
                         accept="image/png, image/jpeg"
@@ -57,6 +57,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     <div className={RegisterStyles.inputContainer}>
                         <input
                         className={ name !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
                         type="text"
                         name='name'
                         value={name}
@@ -68,6 +69,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     <div className={RegisterStyles.inputContainer}>
                         <input
                         className={ lastName !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
                         type="text"
                         name='lastName'
                         value={lastName}
@@ -79,6 +81,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     <div className={RegisterStyles.inputContainer}>
                         <input
                         className={ birthday !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
                         type="text"
                         name='data'
                         value={birthday}
@@ -88,23 +91,11 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     </div>
                 </div>
 
-                <div className="mt-4">
-                    <div className={RegisterStyles.inputContainer}>
-                        <input
-                        className={ numberTel !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
-                        type="text"
-                        name='tel'
-                        value={numberTel}
-                        onChange={e => setNumberTel(e.target.value)}
-                        />
-                        <span className={styles.focusInput} data-placeholder='Telefone ou Celular'></span>
-                    </div>
-                </div>
-
                 <div className="display flex flex-col items-center mt-4">
                     <div className={RegisterStyles.inputContainer}>
                         <input
                         className={ email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
                         type="text"
                         name='email'
                         value={email}
@@ -116,6 +107,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     <div className={RegisterStyles.inputContainer}>
                         <input
                         className={ email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
                         type="text"
                         name='email'
                         value={checkEmail}
@@ -125,7 +117,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
                     </div>
                 </div>
             </form>
-            <button onClick={() => RegisterTrue()} className={`${RegisterStyles.buttonEnter} mt-5`}>enviar</button>
-        </div>
+            <button onClick={() => RegisterTrue()} className={`${RegisterStyles.buttonEnter} mt-5`}>Enviar</button>
+        </>
     )
 }

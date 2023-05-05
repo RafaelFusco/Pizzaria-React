@@ -28,15 +28,16 @@ export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, func
         functionClick3()
     }
     return (
-        <div className={LoginStyles.loginContainer}>
+        <>
             <div className={LoginStyles.headerContainer}>
-                <img className='pointer-events-none drop-shadow-[-2px_1px_1px_rgba(0,0,0,0.3)]' src={logo} alt="" />
+                <img className='pointer-events-none' src={logo} alt="" />
             </div>
 
             <form className={LoginStyles.formContainer}>
                 <div className={LoginStyles.inputContainer}>
                     <input
                     className={email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                    required
                     type="text"
                     name='email'
                     value={email}
@@ -48,6 +49,7 @@ export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, func
                 <div className={LoginStyles.inputContainer}>
                     <input
                     className={password !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                    required
                     type="password"
                     name='password'
                     value={password}
@@ -61,7 +63,7 @@ export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, func
 
             <button className={LoginStyles.buttonEnter} onClick={() => Login()}>Entrar</button>
 
-            <span className={LoginStyles.dontHaveAcc}>Não tem uma conta ? <a className='text-[#ff6a00]' onClick={() => Register()}>Registrar-se</a></span>
-      </div>
+            <span className={LoginStyles.dontHaveAcc}>Não tem uma conta ? <a className='text-[#FBB600]' onClick={() => Register()}>Registrar-se</a></span>
+        </>
     )
 }

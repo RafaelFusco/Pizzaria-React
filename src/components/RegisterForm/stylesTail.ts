@@ -11,20 +11,20 @@ export const RegisterStyles = {
 
     inputContainer:
     `
-    flex flex-col items-start
-    w-full mt-3
+    flex flex-col
+    w-[90%] mt-3
     border-b-2
     drop-shadow-[-1px_1px_1px_rgba(0,0,0,0.5)]
     `,
 
     buttonEnter:
     `
-    w-full m-2 p-1
+    w-full p-1 mt-12 
     font-bold text-white
-    bg-[#f77300]
+    bg-[#FBB600]
     rounded
     drop-shadow-[-1px_1px_1px_rgba(0,0,0,0.5)]
     transition duration-300 ease-in-out
-    hover:bg-[#cd6000] hover:drop-shadow-none hover:text-[#c4c4c4]
+    hover:bg-[#B98600] hover:drop-shadow-none hover:text-[#c4c4c4]
     `
 }
