@@ -5,16 +5,20 @@ flex justify-center items-center
 w-full h-full
 `,
 
-divCarrosel:
+buttonCarrosel:
+`
+z-50 w-9
+bg-[#FBB600]
+border-4 border-y-0 border-black
+hover:bg-[#B98600]
+transition-all duration-300 ease-in-out
+`,
+
+divCarroselImgs:
 `
 flex justify-between items-center
 w-[600px] h-[400px]
 overflow-hidden
-`,
-
-buttonCarrosel:
-`
-z-50 w-9 bg-[#FBB600] border-4 border-black
 `,
 
 img:
@@ -23,7 +27,7 @@ object-cover
 bg-no-repeat
 w-[600px] h-[400px]
 flex-none
-transition-all duration-300 ease-in-out
+transition-all duration-1000 ease-in-out
 translate-x-[0]
 `
 }

@@ -5,6 +5,9 @@ import imgCarrosel1 from '../../assets/pizza1.jpg'
 import imgCarrosel2 from '../../assets/pizza2.jpg'
 import imgCarrosel3 from '../../assets/pizza3.jpg'
 
+import leftArrow from '../../assets/left-arrow.png'
+import rightArrow from '../../assets/right-arrow.png'
+
 
 
 export const Carrosel = () => {
@@ -13,85 +16,76 @@ export const Carrosel = () => {
     const [i, setI] = useState(0);
     const [buttonBool, setButtonBool] = useState(Boolean)
 
-    const HandleNextImg = () => {
-      const imgs = document.querySelectorAll('#carrosel img') as NodeListOf<HTMLImageElement>;
+    const HandleNextImg = useCallback(() => {
+      const imgs = document.querySelectorAll('#carroselImgs img') as NodeListOf<HTMLImageElement>;
 
       if (i > 0 && i >= 1) {
-        imgs[0].style.transform = `translateX(${-2 * 600}px)`
-        imgs[1].style.transform = `translateX(${-2 * 600}px)`
-        imgs[2].style.transform = `translateX(${-0 * 600}px)`
-
-        imgs[i].style.transform = `translateX(${-i * 600}px)`;
-      } else if (i <= 0){
-        imgs[0].style.transform = `translateX(${0 * 600}px)`
-        imgs[1].style.transform = `translateX(${1 * 600}px)`
-        imgs[2].style.transform = `translateX(${2 * 600}px)`
-      }
-    }
-
-    const HandlePrevImg = () => {
-      const imgs = document.querySelectorAll('#carrosel img') as NodeListOf<HTMLImageElement>;
-
-      if (i <= 2 && i > 0) {
-        imgs[0].style.transform = `translateX(${-2 * 600}px)`
-        imgs[1].style.transform = `translateX(${-2 * 600}px)`
-        imgs[2].style.transform = `translateX(${-0 * 600}px)`
+        imgs[0].style.cssText = `transform: translateX(${-2 * 300}px); opacity: 0;`
+        imgs[1].style.cssText = `transform: translateX(${-2 * 600}px); opacity: 0;`
+        imgs[2].style.cssText = `transform: translateX(${0 * 600}px); opacity: 0;`
         
-        imgs[i].style.transform = `translateX(${-i * 600}px)`;
+        imgs[i].style.cssText = `transform: translateX(${-i * 600}px); opacity: 1;`;
+
       } else if (i <= 0){
-        imgs[0].style.transform = `translateX(${0 * 600}px)`
-        imgs[1].style.transform = `translateX(${1 * 600}px)`
-        imgs[2].style.transform = `translateX(${2 * 600}px)`
+        imgs[0].style.cssText = `transform: translateX(${0 * 300}px); opacity: 0`
+        imgs[1].style.cssText = `transform: translateX(${1 * 600}px); opacity: 0`
+        imgs[2].style.cssText = `transform: translateX(${2 * 600}px); opacity: 0`
+
+        imgs[i].style.cssText = `transform: translateX(${-i * 600}px); opacity: 1;`
       }
-    }
+    }, [i])
+
+    const HandlePrevImg = useCallback(() => {
+      const imgs = document.querySelectorAll('#carroselImgs img') as NodeListOf<HTMLImageElement>;
+
+      if (i > 0 && i <= 2) {
+        imgs[0].style.cssText = `transform: translateX(${-2 * 300}px); opacity: 0;`
+        imgs[1].style.cssText = `transform: translateX(${-2 * 600}px); opacity: 0;`
+        imgs[2].style.cssText = `transform: translateX(${0 * 600}px); opacity: 0;`
+        
+        imgs[i].style.cssText = `transform: translateX(${-i * 600}px); opacity: 1;`
+      } else if (i <= 0){
+        imgs[0].style.cssText = `transform: translateX(${0 * 300}px); opacity: 0`
+        imgs[1].style.cssText = `transform: translateX(${1 * 600}px); opacity: 0`
+        imgs[2].style.cssText = `transform: translateX(${2 * 600}px); opacity: 0`
+
+        imgs[i].style.cssText = `transform: translateX(${-i * 600}px); opacity: 1;`
+      }
+    }, [i])
 
     useEffect(() => {
-      if (buttonBool === true) {
-        if (i >= 0 && i <= 2) {
-          HandleNextImg()
-        }
-      }
-      if (buttonBool === false) {
-        if (i >= 0 && i <= 2) {
-          HandlePrevImg()
-        }
-      }
-    }, [i]);
+      buttonBool ? HandleNextImg() : HandlePrevImg()
+    }, [HandleNextImg, HandlePrevImg, i, buttonBool]);
   
     const handleNext = () => {
-        if (i >= 2) {
-          setI(0);
-          setButtonBool(true)
-        } else if (i >= 0 && i <= 2){
-          setI(i + 1);
-          setButtonBool(true)
-        }
-      };
-    
-      const handlePrev = () => {
-        if (i <= 0) {
-          setI(2);
-          setButtonBool(false)
-        } else if (i <= 2) {
-          setI(i - 1);
-          setButtonBool(false)
-        }
-      };
-    
+      setButtonBool(true)
+      return i >= 2 ? setI(0) : setI(i + 1)
+    }
+  
+    const handlePrev = () => {
+      setButtonBool(false)
+      return i <= 0 ? setI(2) : setI(i - 1)
+    }
+
 return (
-    <div  className={CarroselStyles.containerCarrosel}>
+    <div className={CarroselStyles.containerCarrosel}>
+      <div className='flex p-3 bg-[#000000bb] rounded  shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]'>
 
-        <button onClick={() => handlePrev()} className={CarroselStyles.buttonCarrosel}>-</button>
+        <button onClick={() => handlePrev()} className={CarroselStyles.buttonCarrosel}><img src={leftArrow} alt="<"/></button>
 
-        <div id='carrosel' className={CarroselStyles.divCarrosel}>
-             
-            <img className={CarroselStyles.img} src={carrosel[0]} alt="" />
-            <img className={CarroselStyles.img} src={carrosel[1]} alt="" />
-            <img className={CarroselStyles.img} src={carrosel[2]} alt="" />
+        <div id='carroselImgs' className={CarroselStyles.divCarroselImgs}>
+
+            <div className='absolute w-[250px] h-[400px] z-50 bg-[#000000bb]'>calabresa <br /> margarita <br /> pepperoni</div>
+
+            <img className={CarroselStyles.img} src={carrosel[0]} alt="Calabresa" />
+            <img className={CarroselStyles.img} src={carrosel[1]} alt="Margarita" />
+            <img className={CarroselStyles.img} src={carrosel[2]} alt="Pepperoni" />
             
         </div>
 
-        <button onClick={() => handleNext()} className={CarroselStyles.buttonCarrosel}>+</button>
+        <button onClick={() => handleNext()} className={CarroselStyles.buttonCarrosel}><img src={rightArrow} alt=">"/></button>
+
+      </div>
     </div>
 )
 }
