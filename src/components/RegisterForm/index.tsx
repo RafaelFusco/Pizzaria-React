@@ -35,7 +35,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1}) => {
     return (
         <>
             <form className="w-max h-max box-border flex flex-col">
-                <div className="display flex flex-col">
+                <div className="display flex flex-col items-center">
 
                     <div>
                         <img src={imgPerfil !== '' ? imgPerfil : imgPerfilDefault} className="w-[128px] h-[128px]"/>

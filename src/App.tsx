@@ -4,6 +4,7 @@ import { RecoverPass } from './components/RecoverPassForm'
 import { RegisterForm } from './components/RegisterForm' 
 import { AppStyles } from './stylesTail'
 import { useState }  from 'react'
+import { Carrosel } from './components/Carrosel'
 
 function App() {
 
@@ -36,6 +37,8 @@ function App() {
   return (
 
    <div className={ !checkLogin ? `${AppStyles.container1} ${AppStyles.bgImgContainer}` : `${AppStyles.container2} ${AppStyles.bgImgContainer}`}>
+
+    <Carrosel />
 
     {!checkLogin && !mainPage &&
       <div className={AppStyles.loginContainer}>

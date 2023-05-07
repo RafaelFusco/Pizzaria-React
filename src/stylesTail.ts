@@ -5,12 +5,15 @@ export const AppStyles = {
     bg-[length:100vw_100vh]
     `,
 
+    imgCarrosel1:
+    `
+    bg-[length:10%_50%]
+    `,
+
     container1:
     `
     flex justify-end items-center
     w-screen h-screen p-[15px]
-    backdrop-blur-[2.5px]
-    bg-gradient-to-r from-red-600 to-[#ff9437]
     `,
 
     container2:
@@ -22,7 +25,7 @@ export const AppStyles = {
     loginContainer:
     `
     flex flex-col justify-center items-center
-    w-[350px] h-screen p-8
+    w-[420px] h-screen p-8
     bg-[#000000bb]
     transition-all duration-300 ease-in-out
     shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]
