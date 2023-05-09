@@ -1,4 +1,5 @@
 export const RegisterStyles = {
+    
     registerContainer:
     `
     flex flex-col justify-center items-center

@@ -63,7 +63,12 @@ export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, func
 
             <button className={LoginStyles.buttonEnter} onClick={() => Login()}>Entrar</button>
 
-            <span className={LoginStyles.dontHaveAcc}>Não tem uma conta ? <a className='text-[#FBB600]' onClick={() => Register()}>Registrar-se</a></span>
+            <span className={LoginStyles.dontHaveAcc}>Não tem uma conta ? <a className='text-[#FBB600] cursor-pointer' onClick={() => Register()}>Registrar-se</a></span>
+
+            <div className='flex justify-center mt-8'>
+                <h1 className='font-bold'>Entrar como visitante</h1>
+                <button className={LoginStyles.buttonBack} onClick={() => Login()}>{'>'}</button>
+            </div>
         </>
     )
 }

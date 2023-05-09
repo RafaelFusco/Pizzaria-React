@@ -12,8 +12,8 @@ export const AppStyles = {
 
     container1:
     `
-    flex justify-end items-center
-    w-screen h-screen p-[15px]
+    flex justify-end items-center max-[1000px]:justify-center
+    w-screen h-screen 
     `,
 
     container2:
