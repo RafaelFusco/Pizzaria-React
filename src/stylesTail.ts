@@ -12,14 +12,14 @@ export const AppStyles = {
 
     container1:
     `
-    flex justify-end items-center max-[1000px]:justify-center
+    flex justify-end items-center max-[1024px]:justify-center
     w-screen h-screen 
     `,
 
     container2:
     `
     flex justify-center items-center
-    w-screen h-screen p-[15px]
+    w-full h-full
     `,
 
     loginContainer:

@@ -27,5 +27,16 @@ export const RegisterStyles = {
     drop-shadow-[-1px_1px_1px_rgba(0,0,0,0.5)]
     transition duration-300 ease-in-out
     hover:bg-[#B98600] hover:drop-shadow-none hover:text-[#c4c4c4]
+    `,
+    
+    buttonBack:
     `
+    h-max
+    mr-3 px-3
+    font-bold text-white
+    bg-[#FBB600]
+    rounded
+    transition duration-300 ease-in-out
+    hover:bg-[#B98600] hover:drop-shadow-none hover:text-[#c4c4c4]
+    `,
 }

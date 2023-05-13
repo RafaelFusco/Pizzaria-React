@@ -5,7 +5,7 @@ import { RegisterForm } from './components/RegisterForm'
 import { AppStyles } from './stylesTail'
 import { useEffect, useState }  from 'react'
 import { Carrosel } from './components/Carrosel'
-import { MainPage } from './components/MainPage/MainPage'
+import { MainPage } from './components/MainPage'
 
 function App() {
 
@@ -37,6 +37,11 @@ function App() {
     setRecoverPass(false)
   }
 
+  const HandleBack = () => {
+    setRecoverPass(false)
+    setRegister(false)
+  } 
+
   useEffect(() => {
     const HandleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', HandleResize);
@@ -45,33 +50,37 @@ function App() {
   }, []);
 
   return (
+    <>
+      {!checkLogin &&
+        <div className={`${AppStyles.container1} ${AppStyles.bgImgContainer}`}>
+          {!checkLogin && !mainPage &&
+            <>
+              {width >= 1024 &&
+                <Carrosel />
+              }
+              <div className={AppStyles.loginContainer}>
+                {!recoverPass && !register && !checkLogin &&
+                  <LoginForm functionClick1={HandleClickRecoverPass} functionClick2={HandleClickRegister} functionClick3={HandleClickLogin}/>
+                }
 
-   <div className={!checkLogin ? `${AppStyles.container1} ${AppStyles.bgImgContainer}` : `${AppStyles.container2} ${AppStyles.bgImgContainer}`}>
-    {!checkLogin && !mainPage &&
-      <>
-        {width >= 850 &&
-          <Carrosel />
-        }
-        <div className={AppStyles.loginContainer}>
-          {!recoverPass && !register && !checkLogin &&
-            <LoginForm functionClick1={HandleClickRecoverPass} functionClick2={HandleClickRegister} functionClick3={HandleClickLogin}/>
-          }
+                {recoverPass && !checkLogin &&
+                  <RecoverPass functionClickRecover1={HandleClickRecoverFalse} functionClickRecover2={HandleBack}/>
+                }
 
-          {recoverPass && !checkLogin &&
-            <RecoverPass functionClickRecover1={HandleClickRecoverFalse}/>
-          }
-
-          {register && !checkLogin &&
-            <RegisterForm functionClickRegister1={HandleClickRegisterFalse}/>
+                {register && !checkLogin &&
+                  <RegisterForm functionClickRegister1={HandleClickRegisterFalse} functionClickRegister2={HandleBack}/>
+                }
+              </div>
+            </>
           }
         </div>
-      </>
-    }
-
-    {checkLogin && mainPage &&
-      <MainPage />
-    }
-  </div>
+      }
+      {checkLogin && mainPage &&
+      <div className={AppStyles.container2}>
+        <MainPage />
+      </div>
+      }
+  </>
   )
 }
 

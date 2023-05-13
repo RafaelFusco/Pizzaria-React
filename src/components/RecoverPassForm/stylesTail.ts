@@ -13,6 +13,11 @@ export const RecoverStyles = {
     rounded
     `,
 
+    information:
+    `
+    text-[16px] font-bold
+    `,
+
     inputContainer:
     `
     flex flex-col items-start
@@ -31,8 +36,14 @@ export const RecoverStyles = {
     hover:bg-[#B98600] hover:text-[#c4c4c4]
     `,
 
-    information:
+    buttonBack:
     `
-    text-[16px] font-bold
+    h-max
+    mr-3 px-3
+    font-bold text-white
+    bg-[#FBB600]
+    rounded
+    transition duration-300 ease-in-out
+    hover:bg-[#B98600] hover:drop-shadow-none hover:text-[#c4c4c4]
     `
 }

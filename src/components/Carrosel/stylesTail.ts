@@ -8,7 +8,7 @@ export const CarroselStyles = {
     carrosel:
     `
     flex
-    p-3 
+    py-1
     bg-[#000000bb]
     rounded
     shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]
@@ -26,7 +26,7 @@ export const CarroselStyles = {
     divCarroselImgs:
     `
     flex justify-between items-center
-    w-[50vw] h-[60vh]
+    w-[600px] h-[400px]
     overflow-hidden
     `,
 
@@ -34,7 +34,7 @@ export const CarroselStyles = {
     `
     absolute
     flex flex-col justify-center
-    w-[20vw] h-[60vh]
+    w-[250px] h-[400px]
     bg-[#000000bb]
     font-bold text-[2.8rem] 
     max-[1200px]:text-[2.5rem] max-[1100px]:text-[2.4rem]
@@ -48,6 +48,7 @@ export const CarroselStyles = {
     `
     mb-[20px]
     text-[#a7a7a7]
+    text-[1.7rem]
     max-[1200px]:text-[1.5rem] max-[1100px]:text-[1.4rem]
     max-[1000px]:text-[1rem]
     `,
@@ -55,7 +56,7 @@ export const CarroselStyles = {
     img:
     `
     flex-none
-    w-[50vw] h-[60vh]
+    w-[600px] h-[400px]
     bg-no-repeat object-cover
     transition-all duration-1000 ease-in-out
     translate-x-[0]
