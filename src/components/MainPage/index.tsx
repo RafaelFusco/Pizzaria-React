@@ -4,15 +4,15 @@ import { itemsPizza } from "./items"
 
 
 export const MainPage = () => {
-
+    const pizzas = itemsPizza
     return (
 
         <div className={MainPageStyles.mainContainer}>
-            <div className="fixed flex items-center w-full h-[50px] bg-[#000000e9]"></div>
+            <div className="fixed flex items-center w-full h-[50px] bg-black"></div>
 
-            <div id="modal" className="w-full h-max p-2 pt-14 rounded">
+            <div id="modal" className="w-full h-max p-2 pt-[50px] rounded">
 
-            <PizzaList pizzas={itemsPizza}/>       
+            <PizzaList pizzas={pizzas}/>       
                 
             </div>
         </div>

@@ -29,5 +29,15 @@ export const AppStyles = {
     bg-[#000000bb]
     transition-all duration-300 ease-in-out
     shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]
+    `,
+
+    buttonEnter:
+    `
+    w-full m-2 p-1
+    font-bold text-white
+    bg-[#FBB600]
+    rounded
+    transition duration-300 ease-in-out
+    hover:bg-[#B98600] hover:drop-shadow-none hover:text-[#c4c4c4]
     `
 }
