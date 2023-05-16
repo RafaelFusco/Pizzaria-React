@@ -7,8 +7,6 @@ export const MainPageStyles = {
     w-full h-full
     bg-[url('./assets/background1.jpg')]
     bg-[length:100vw_100vh]
-    rounded
-    shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]
     `,
 
     itemListStyle:
@@ -28,7 +26,7 @@ export const MainPageStyles = {
     shadow-[-5px_0px_10px_5px_rgba(0,0,0,0.3)]
     `,
 
-    itemDetailsContainer:
+    itemDetailsBgImg:
     `
     bg-[url('./assets/background1.jpg')]
     bg-[length:100vw_100vh]
@@ -47,6 +45,27 @@ export const MainPageStyles = {
     sizesStyles:
     `
     m-1 p-1 rounded text-[11px] max-[1000px]:text-[10px]
+    `,
+    
+    buttonEnter:
     `
+    w-full m-2 p-1
+    font-bold text-white
+    bg-[#FBB600]
+    rounded
+    transition duration-300 ease-in-out
+    hover:drop-shadow-none hover:text-[#c4c4c4]
+    `,
+
+    itemDetailsContainer:
+    `
+    z-50 
+    fixed 
+    flex justify-center items-center 
+    w-full h-full 
+    bg-[#000000a0] 
+    top-0 
+    overflow-y-hidden 
+    `,
 
 }

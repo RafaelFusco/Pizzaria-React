@@ -57,10 +57,10 @@ const Pizza = ({ pizza, onClick }: PizzaProps) => {
         </div>
 
         {selected &&
-            <div className={`top-0 flex justify-center items-center overflow-y-hidden fixed w-full h-full bg-[#000000a0] z-50 ${MainPageStyles.itemDetailsContainer}`}>
+            <div className={`${MainPageStyles.itemDetailsContainer} ${MainPageStyles.itemDetailsBgImg}`}>
 
               <div className={`pizza-item ${MainPageStyles.itemDetailsStyle}`}>
-                <img className="w-[35%] max-[1000px]:w-[45%] m-4" src={pizza.img} alt={pizza.name} />
+                <img className="w-[35%] max-[1000px]:w-[35%] m-4" src={pizza.img} alt={pizza.name} />
 
                 <div className="w-1/2 max-[1000px]:w-full flex flex-col items-center">
                   <h3 className="text-[30px] max-[1000px]:text-[25px] font-bold">{pizza.name}</h3>
@@ -90,9 +90,9 @@ const Pizza = ({ pizza, onClick }: PizzaProps) => {
 
                     </div>
 
-                  <div className="flex flex-row justify-center items-center m-1 w-[80%]">
+                  <div className="flex flex-row justify-center items-center m-1 w-[90%]">
                     <button className={`${AppStyles.buttonEnter} max-[1000px]:text-[10px] max-[1000px]:w-[40%] max-[500px]:w-full w-[50%] px-2`}>Adicionar ao Carrinho</button>
-                    <button className={`${AppStyles.buttonEnter} max-[1000px]:text-[10px] w-[40%] bg-[#525252] hover:bg-[#404040]`} onClick={handleClick}>Cancelar</button>
+                    <button className={`${MainPageStyles.buttonEnter} max-[1000px]:text-[10px] max-[1000px]:w-[40%] w-[40%] bg-[#505050] hover:bg-[#404040]`} onClick={handleClick}>Cancelar</button>
                   </div>
                 </div>
 

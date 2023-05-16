@@ -49,6 +49,16 @@ function App() {
     return () => window.removeEventListener('resize', HandleResize);
   }, []);
 
+  const buttonExitMenu = () => {
+    setLogin(false)
+    setMainPage(false)
+  }
+
+  const buttonPizzasMenu = () => {
+    setLogin(true)
+    setMainPage(true)
+  }
+
   return (
     <>
       {!checkLogin &&
@@ -77,7 +87,7 @@ function App() {
       }
       {checkLogin && mainPage &&
       <div className={AppStyles.container2}>
-        <MainPage />
+        <MainPage functionClick1={buttonExitMenu} functionClick2={buttonPizzasMenu} functionClick3={buttonExitMenu}/>
       </div>
       }
   </>
