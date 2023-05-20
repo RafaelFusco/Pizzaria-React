@@ -51,7 +51,7 @@ export const MainPageStyles = {
     `
     w-full m-2 p-1
     font-bold text-white
-    bg-[#FBB600]
+    bg-[#505050]
     rounded
     transition duration-300 ease-in-out
     hover:drop-shadow-none hover:text-[#c4c4c4]

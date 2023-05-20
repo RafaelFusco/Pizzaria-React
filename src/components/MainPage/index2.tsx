@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { MainPageStyles } from "./stylesTail"
 import { AppStyles } from "../../stylesTail"
 
@@ -13,22 +13,25 @@ interface PizzaItem {
 
 interface PizzaProps {
     pizza: PizzaItem
-    onClick?: () => void
+    functionClick1?: () => void
 }
 
 interface PizzaListProps {
     pizzas: PizzaItem[];
-  }
+    functionClick1?: () => void
+}
 
-const Pizza = ({ pizza, onClick }: PizzaProps) => {
+const Pizza = ({ pizza, functionClick1 }: PizzaProps) => {
     const [selected, setSelected] = useState(false)
     const [selectedSize, setSelectedSize] = useState<string | null>('55cm')
+    const [priceSize, setPriceSize ] = useState(0)
+    const [amount, setAmountOfPizzas] = useState(1)
   
     const handleClick = () => {
       setSelected(!selected)
-      onClick?.()
       selected ? document.documentElement.style.overflowY = 'auto' : document.documentElement.style.overflowY = 'hidden'
       setSelectedSize('55cm')
+      setAmountOfPizzas(1)
     }
 
     const handleSizeClick = (size: string) => {
@@ -46,6 +49,26 @@ const Pizza = ({ pizza, onClick }: PizzaProps) => {
         return 'Indefinida'
       }
     }
+
+    const handlePriceSize = useCallback(() => {
+      selectedSize === '30cm' ? setPriceSize(pizza.price) : null
+      selectedSize === '40cm' ? setPriceSize(pizza.price + 5.00) : null
+      selectedSize === '55cm' ? setPriceSize(pizza.price + 10.00) : null
+
+      return priceSize
+    }, [pizza.price, priceSize, selectedSize])
+
+    const addOnePizza = () => {
+      return setAmountOfPizzas(amount + 1)
+    }
+  
+    const removeOnePizza = () => {
+      return amount > 1 ? setAmountOfPizzas(amount - 1) : null
+    }
+
+    useEffect(() => {
+      handlePriceSize()
+    }, [selected, handlePriceSize])
 
   return (
       <>
@@ -77,21 +100,21 @@ const Pizza = ({ pizza, onClick }: PizzaProps) => {
                     ))}
                   </span>
                     
-                    <div className="flex">
-                      <span className="text-[25px] max-[1000px]:text-[20px] font-bold mr-3">R$ {pizza.price.toFixed(2)}</span>
+                    <div className="flex w-[60%] justify-evenly">
+                      <span className="text-[25px] max-[1000px]:text-[20px] font-bold mr-3">R$ {( priceSize * amount).toFixed(2)}</span>
                       
                       <div className="flex items-center">
 
-                        <button className="">-</button>
-                        <div className="pizza-qt mx-2">1</div>
-                        <button className="s">+</button>
-            
+                        <button className="px-2" onClick={removeOnePizza}>-</button>
+                        <div className="pizza-qt mx-2">{amount}</div>
+                        <button className="px-2" onClick={addOnePizza}>+</button>
+
                       </div>
 
                     </div>
 
                   <div className="flex flex-row justify-center items-center m-1 w-[90%]">
-                    <button className={`${AppStyles.buttonEnter} max-[1000px]:text-[10px] max-[1000px]:w-[40%] max-[500px]:w-full w-[50%] px-2`}>Adicionar ao Carrinho</button>
+                    <button className={`${AppStyles.buttonEnter} max-[1000px]:text-[10px] max-[1000px]:w-[40%] max-[500px]:w-full w-[50%] px-2`} onClick={functionClick1}>Adicionar ao Carrinho</button>
                     <button className={`${MainPageStyles.buttonEnter} max-[1000px]:text-[10px] max-[1000px]:w-[40%] w-[40%] bg-[#505050] hover:bg-[#404040]`} onClick={handleClick}>Cancelar</button>
                   </div>
                 </div>
@@ -104,11 +127,11 @@ const Pizza = ({ pizza, onClick }: PizzaProps) => {
       )
 }
   
-export const PizzaList = ({ pizzas }: PizzaListProps) => {
+export const PizzaList = ({ pizzas, functionClick1 }: PizzaListProps) => {
     return (
       <div className={`pizza-list ${MainPageStyles.itemListStyle}`}>
         {pizzas.map((pizza: PizzaItem, index: number) => (
-          <Pizza key={index} pizza={pizza}/>
+          <Pizza key={index} pizza={pizza} functionClick1={functionClick1}/>
         ))}
       </div>
     );
