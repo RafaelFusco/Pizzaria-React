@@ -121,12 +121,11 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
                             <input type="data" disabled className='text-center bg-transparent' placeholder="01/01/2000"/>
                             <input type="email" disabled className='text-center bg-transparent' placeholder="exemplo@gmail.com" />
 
-                          </div>
-
-                          <p className="my-3 text-red-600">
+                            <p className="my-3 text-red-600">
                               ( Ainda não foi desenvolvido )
-                          </p>
-
+                            </p>
+                          </div>
+                          
                           <a className="menu-item hover:text-white cursor-pointer my-5" onClick={closePerfilMenu}>
                             Sair do perfil
                           </a>
@@ -138,8 +137,8 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
                             Carrinho
                           </h1>
 
-                          <div className="text-red-700 my-10">
-                            <p>
+                          <div>
+                            <p className="text-red-700 my-10">
                               ( Ainda não foi desenvolvido )
                             </p>
                           </div>
