@@ -61,7 +61,7 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [shoppingCart, setShoppingCart] = useState(false)
-    const [perfilMenu, setPerfilMenu] = useState(false)
+    const [perfilMenu, setPerfilMenu] = useState<boolean>(false)
 
     const [cartt, setCartt] = useState(false)
 
