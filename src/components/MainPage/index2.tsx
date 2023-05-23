@@ -7,7 +7,6 @@ interface PizzaItem {
   id: number
   name: string
   img: string
-  img2: string
   price: number
   sizes: string[]
   description: string
@@ -77,7 +76,7 @@ const Pizza = ({ pizza, functionClick1 }: PizzaProps) => {
   return (
     <>
       <div className={`pizza-item ${MainPageStyles.itemStyle}`} onClick={handleClick}>
-        <img className="w-[60%] m-4" src={pizza.img} alt={pizza.img2} />
+        <img className="w-[60%] m-4" src={pizza.img} alt={pizza.name} />
         <span className="text-[25px] font-bold">R$ {pizza.price.toFixed(2)}</span>
         <h3 className="text-[30px] font-bold">{pizza.name}</h3>
         <p className="m-5">{pizza.description}</p>
@@ -87,7 +86,7 @@ const Pizza = ({ pizza, functionClick1 }: PizzaProps) => {
         <div className={`${MainPageStyles.itemDetailsContainer} ${MainPageStyles.itemDetailsBgImg}`}>
 
           <div className={`pizza-item ${MainPageStyles.itemDetailsStyle}`}>
-            <img className="w-[35%] max-[1000px]:w-[35%] m-4" src={pizza.img} alt={pizza.img2} />
+            <img className="w-[35%] max-[1000px]:w-[35%] m-4" src={pizza.img} alt={pizza.name} />
 
             <div className="w-1/2 max-[1000px]:w-full flex flex-col items-center">
               <h3 className="text-[30px] max-[1000px]:text-[25px] font-bold">{pizza.name}</h3>
