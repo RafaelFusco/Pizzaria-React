@@ -2,12 +2,22 @@ import { MainPageStyles } from "./stylesTail"
 import PizzaList from "./index2"
 import { itemsPizza } from "./items"
 import { stack as Menu} from 'react-burger-menu';
-import { useState } from "react";
+import { useState} from "react";
+import imgPerfilDefault from '../../assets/perfil.png'
 
 interface Props {
-    functionClick1: () => void;
-    functionClick2: () => void;
-    functionClick3: () => void;
+  functionClick1: () => void
+  functionClick2: () => Promise<PizzaItem>;
+  functionClick3: () => void
+}
+
+interface PizzaItem {
+  id: number
+  name: string
+  img: string
+  price: number
+  sizes: string[]
+  description: string
 }
 
 
@@ -64,11 +74,16 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [shoppingCart, setShoppingCart] = useState(false)
     const [perfilMenu, setPerfilMenu] = useState(false)
+
+    const [cartt, setCartt] = useState(false)
+
     const pizzas = itemsPizza
 
     const openCart = () => {
-        setIsOpen(true);
-        setShoppingCart(true)
+      setIsOpen(true);
+      setShoppingCart(true)
+      setCartt(true)
+      setPerfilMenu(false)
     }
 
     const closeCart = () => {
@@ -109,15 +124,19 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
                           <h1 className="menu-item my-5" >
                             Perfil
                           </h1>
-                          <div>
+                          <div className="flex flex-col items-center">
 
-                            <img src=""/>
+                            <img src={imgPerfilDefault} className="w-1/2 mb-5"/>
 
-                            <input type="name" disabled className='bg-transparent' placeholder="Fulano" />
-                            <input type="data" disabled className='bg-transparent' placeholder="01/01/2000"/>
-                            <input type="email" disabled className='bg-transparent' placeholder="exemplo@gmail.com" />
+                            <input type="name" disabled className='text-center bg-transparent' placeholder="Fulano" />
+                            <input type="data" disabled className='text-center bg-transparent' placeholder="01/01/2000"/>
+                            <input type="email" disabled className='text-center bg-transparent' placeholder="exemplo@gmail.com" />
 
                           </div>
+
+                          <p className="my-3 text-red-600">
+                              ( Ainda não foi desenvolvido )
+                          </p>
 
                           <a className="menu-item hover:text-white cursor-pointer my-5" onClick={closePerfilMenu}>
                             Sair do perfil
@@ -130,8 +149,10 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
                             Carrinho
                           </h1>
 
-                          <div>
-                  
+                          <div className="text-red-700 my-10">
+                            <p>
+                              ( Ainda não foi desenvolvido )
+                            </p>
                           </div>
 
                           <a className="menu-item hover:text-white cursor-pointer" onClick={closeCart}>

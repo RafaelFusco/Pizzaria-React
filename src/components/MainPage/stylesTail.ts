@@ -68,4 +68,23 @@ export const MainPageStyles = {
     overflow-y-hidden 
     `,
 
+    containerButton:
+    `
+    flex flex-row justify-center items-center
+    w-[90%]
+    m-1
+    `,
+    buttonCart:
+    `
+    w-[50%] max-[1000px]:w-[40%] max-[500px]:w-full
+    px-2
+    max-[1000px]:text-[10px]
+    `,
+
+    buttonCancel:
+    `
+    max-[1000px]:w-[40%] w-[40%]
+    bg-[#505050] hover:bg-[#404040]
+    max-[1000px]:text-[10px] 
+    `
 }

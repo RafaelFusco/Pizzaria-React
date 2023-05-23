@@ -20,14 +20,13 @@ export const LoginStyles = {
 
     recoverPassword: 
     `
-    my-7 
     text-[16px] font-bold text-[#FBB600]
     cursor-pointer
     `,
 
     buttonEnter:
     `
-    w-full m-2 p-1
+    w-full mt-4 p-1
     font-bold text-white
     bg-[#FBB600]
     rounded
@@ -37,7 +36,7 @@ export const LoginStyles = {
 
     dontHaveAcc:
     `
-    mt-6
+    mt-3
     font-bold
     cursor-default
     `,

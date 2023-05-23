@@ -20,7 +20,7 @@ export const RegisterStyles = {
 
     buttonEnter:
     `
-    w-full p-1 mt-12 
+    w-full p-1
     font-bold text-white
     bg-[#FBB600]
     rounded

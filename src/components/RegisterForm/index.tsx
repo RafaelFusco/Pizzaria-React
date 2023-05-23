@@ -36,10 +36,25 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
     const HandleBack = () => {
         functionClickRegister2()
     }
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+
+        RegisterTrue()
+    
+        setName('')
+        setLastName('')
+        
+        setEmail('')
+        setCheckEmail('')
+
+        setImgPerfil('')
+      }
+
     return (
         <>
             <div className="m-auto">
-                <form className="w-max h-max box-border flex flex-col">
+                <form onSubmit={handleSubmit} className="w-max h-max box-border flex flex-col">
                     <div className="display flex flex-col items-center">
 
                         <div>
@@ -49,7 +64,6 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
                         <div className={`${RegisterStyles.inputContainer} border-none`}>
                             <input 
                             className={`${styles.inputStyle} text-[12px] h-max`}
-                            required
                             type="file"
                             name="avatar"
                             accept="image/png, image/jpeg"
@@ -63,7 +77,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
                             <input
                             className={ name !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
                             required
-                            type="text"
+                            type="name"
                             name='name'
                             value={name}
                             onChange={e => setName(e.target.value)}
@@ -75,33 +89,21 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
                             <input
                             className={ lastName !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
                             required
-                            type="text"
+                            type="name"
                             name='lastName'
                             value={lastName}
                             onChange={e => setLastName(e.target.value)}
                             />
                             <span className={styles.focusInput} data-placeholder='Sobrenome'></span>
                         </div>
-
-                        <div className={RegisterStyles.inputContainer}>
-                            <input
-                            className={ birthday !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
-                            required
-                            type="text"
-                            name='data'
-                            value={birthday}
-                            onChange={e => setBirthday(e.target.value)}
-                            />
-                            <span className={styles.focusInput} data-placeholder='Aniversário'></span>
-                        </div>
                     </div>
 
-                    <div className="display flex flex-col items-center mt-4">
+                    <div className="display flex flex-col items-center my-4">
                         <div className={RegisterStyles.inputContainer}>
                             <input
                             className={ email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
                             required
-                            type="text"
+                            type="email"
                             name='email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
@@ -113,7 +115,7 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
                             <input
                             className={ email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
                             required
-                            type="text"
+                            type="email"
                             name='email'
                             value={checkEmail}
                             onChange={e => setCheckEmail(e.target.value)}
@@ -121,8 +123,9 @@ export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionC
                             <span className={styles.focusInput} data-placeholder='Confirme seu Email'></span>
                         </div>
                     </div>
+
+                    <button type="submit" className={`${RegisterStyles.buttonEnter} mt-5`}>Enviar</button>
                 </form>
-                <button onClick={() => RegisterTrue()} className={`${RegisterStyles.buttonEnter} mt-5`}>Enviar</button>
             </div>
 
             <div className="flex flex-row w-full">

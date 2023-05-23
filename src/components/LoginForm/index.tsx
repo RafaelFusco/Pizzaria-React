@@ -11,7 +11,7 @@ interface Props {
     functionClick3: () => void;
 }
 
-export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, functionClick3}) => {
+export const LoginForm: React.FC<Props> = ({ functionClick1, functionClick2, functionClick3 }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -27,41 +27,50 @@ export const LoginForm: React.FC<Props> = ({functionClick1, functionClick2, func
     const Login = () => {
         functionClick3()
     }
+   
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+
+        Login()
+
+    }
+
     return (
         <>
             <div className={LoginStyles.headerContainer}>
                 <img className='pointer-events-none' src={logo} alt="" />
             </div>
 
-            <form className={LoginStyles.formContainer}>
+            <form onSubmit={handleSubmit} className={LoginStyles.formContainer}>
                 <div className={LoginStyles.inputContainer}>
                     <input
-                    className={email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
-                    required
-                    type="text"
-                    name='email'
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                        className={email !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
+                        type="email"
+                        name='email'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                     />
                     <span className={styles.focusInput} data-placeholder='Email'></span>
                 </div>
 
-                <div className={LoginStyles.inputContainer}>
+                <div className={`${LoginStyles.inputContainer} mb-5`}>
                     <input
-                    className={password !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
-                    required
-                    type="password"
-                    name='password'
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                        className={password !== '' ? `${styles.inputStyle} ${styles.hasVal}` : `${styles.inputStyle}`}
+                        required
+                        type="password"
+                        name='password'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                     <span className={styles.focusInput} data-placeholder='Senha'></span>
                 </div>
-            </form>  
 
-            <a className={LoginStyles.recoverPassword} onClick={() => RecoverPass()}>Esqueceu sua senha?</a>
+                <a className={LoginStyles.recoverPassword} onClick={() => RecoverPass()}>Esqueceu sua senha?</a>
 
-            <button className={LoginStyles.buttonEnter} onClick={() => Login()}>Entrar</button>
+                <button type='submit' className={LoginStyles.buttonEnter}>Entrar</button>
+
+            </form>
 
             <span className={LoginStyles.dontHaveAcc}>Não tem uma conta ? <a className='text-[#FBB600] cursor-pointer' onClick={() => Register()}>Registrar-se</a></span>
 
