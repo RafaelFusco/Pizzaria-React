@@ -1,8 +1,8 @@
 import { MainPageStyles } from "./stylesTail"
 import PizzaList from "./index2"
 import { itemsPizza } from "./items"
-import { stack as Menu} from 'react-burger-menu';
-import { useState} from "react";
+import { stack as Menu} from 'react-burger-menu'
+import { useState} from "react"
 import imgPerfilDefault from '../../assets/perfil.png'
 
 interface Props {
@@ -61,7 +61,7 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [shoppingCart, setShoppingCart] = useState(false)
-    const [perfilMenu, setPerfilMenu] = useState<boolean>(false)
+    const [perfilMenu, setPerfilMenu] = useState(false)
 
     const [cartt, setCartt] = useState(false)
 
