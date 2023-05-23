@@ -54,11 +54,6 @@ function App() {
     setMainPage(false)
   }
 
-  const buttonPizzasMenu = () => {
-    setLogin(true)
-    setMainPage(true)
-  }
-
   return (
     <>
       {!checkLogin &&
@@ -87,7 +82,7 @@ function App() {
       }
       {checkLogin && mainPage &&
       <div className={AppStyles.container2}>
-        <MainPage functionClick1={buttonExitMenu} functionClick2={buttonPizzasMenu} functionClick3={buttonExitMenu}/>
+        <MainPage functionClick3={buttonExitMenu}/>
       </div>
       }
   </>

@@ -12,7 +12,6 @@ interface Props {
 export const RegisterForm: React.FC<Props> = ({functionClickRegister1, functionClickRegister2}) => {
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [birthday, setBirthday] = useState('')
 
     const [email, setEmail] = useState('')
     const [checkEmail, setCheckEmail] = useState('')

@@ -24,7 +24,7 @@ interface PizzaListProps {
   functionClick2?: () => void
 }
 
-const Pizza = ({ pizza, functionClick1, functionClick2 }: PizzaProps) => {
+const Pizza = ({ pizza, functionClick1 }: PizzaProps) => {
   const [selected, setSelected] = useState(false)
   const [selectedSize, setSelectedSize] = useState<string | null>('55cm')
   const [priceSize, setPriceSize] = useState(0)
@@ -72,13 +72,6 @@ const Pizza = ({ pizza, functionClick1, functionClick2 }: PizzaProps) => {
   useEffect(() => {
     handlePriceSize()
   }, [selected, handlePriceSize])
-
-
-  const [cartItems, setCartItems] = useState<PizzaItem[]>([]);
-
-  const handleAddToCart = (item: PizzaItem) => {
-    setCartItems([...cartItems, item]);
-  };
 
   return (
     <>

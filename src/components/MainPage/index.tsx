@@ -6,20 +6,8 @@ import { useState} from "react";
 import imgPerfilDefault from '../../assets/perfil.png'
 
 interface Props {
-  functionClick1: () => void
-  functionClick2: () => Promise<PizzaItem>;
   functionClick3: () => void
 }
-
-interface PizzaItem {
-  id: number
-  name: string
-  img: string
-  price: number
-  sizes: string[]
-  description: string
-}
-
 
 export const MainPage: React.FC<Props> = ({functionClick3}) => {
     
@@ -88,6 +76,7 @@ export const MainPage: React.FC<Props> = ({functionClick3}) => {
 
     const closeCart = () => {
       setShoppingCart(false)
+      return cartt
     }
 
     const openPerfilMenu = () => {
